@@ -1,11 +1,11 @@
 <html>
-<%@page import="com.meretta.LoginDao"%>  
+<%@page import="com.meretta.LoginController"%>  
 <jsp:useBean id="obj" class="com.meretta.UsuarioDto"/>  
   
 <jsp:setProperty property="*" name="obj"/>  
   
 <%  
-	boolean status=LoginDao.validate(obj);  
+	boolean status=LoginController.validate(obj);  
 	if(status){  
 		out.println("You r successfully logged in");  
 		session.setAttribute("session","TRUE");  

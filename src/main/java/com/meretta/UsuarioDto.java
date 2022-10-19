@@ -1,5 +1,8 @@
 package com.meretta;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class UsuarioDto {
 
 	private String email;
@@ -21,4 +24,15 @@ public class UsuarioDto {
 		this.pass = pass;
 	}
 
+	public String md5(String password) {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		return digest.toString();
+	}
 }
