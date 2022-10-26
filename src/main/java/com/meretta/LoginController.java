@@ -9,12 +9,10 @@ public class LoginController {
 	public static boolean validate(UsuarioDto usuarioDto) {
 		Boolean resultado = false;
 		UsuarioDao usuarioDao = new UsuarioDao();
-		List<Usuario> obtenerUsuarios = usuarioDao.obtenerUsuarios();
-		for (Usuario usuario : obtenerUsuarios) {
-			if (usuario.getEmail().equalsIgnoreCase(usuarioDto.getEmail())) {
-				if (usuario.getPass().equalsIgnoreCase(usuarioDto.getPass())) {
+		Usuario usuario = usuarioDao.obtenerUsuario(usuarioDto.getEmail());
+		if (usuario != null) {
+			if (usuario.getPass().equalsIgnoreCase(usuarioDto.getPass())) {
 					resultado = true;
-				}
 			}
 		}
 		return resultado;
